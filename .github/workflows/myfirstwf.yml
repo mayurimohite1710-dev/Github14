@@ -9,8 +9,5 @@ jobs:
       - name: Checkout current repo
         uses: actions/checkout@v4
 
-      - name: Clone external repo
-        run: git clone https://github.com/mayurimohite1710-dev/Github14.git
-
-      - name: Show all files
+      - name: list files
         run: ls -l
