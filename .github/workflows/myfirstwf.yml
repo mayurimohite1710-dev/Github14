@@ -6,20 +6,16 @@ jobs:
   myfirstjob:
     runs-on: self-hosted
     steps:
-      - name: Checkout current repo
-        uses: actions/checkout@v4
+      - name: create a file
+        run: echo "This is my first workflow" > myfirstfile.txt
 
-      - name: list files
-        run: ls -l
-  mysecondjob:
-    runs-on: ubuntu-latest
-    needs: myfirstjob
-    steps:
-      - name: Install Node.js
-        uses: actions/setup-node@v3
+      - name: upload artifact
+        uses: actions/upload-artifact@v3
         with:
-          node-version: 16
+          name: myfirstartifact
+          path: myfirstfile.txt
 
-      - name: check node version
-        run: node -v
+
+
+      
         
