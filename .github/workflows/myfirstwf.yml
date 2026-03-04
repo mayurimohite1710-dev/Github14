@@ -4,7 +4,7 @@ on: push
 
 jobs:
   myfirstjob:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout current repo
         uses: actions/checkout@v4
