@@ -11,3 +11,14 @@ jobs:
 
       - name: list files
         run: ls -l
+  mysecondjob:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: check node version
+        run: node -v
+        
