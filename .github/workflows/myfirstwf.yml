@@ -1,11 +1,16 @@
 name: My First Workflow
 
-on: workflow_dispatch
+on: push
 
 jobs:
   myfirstjob:
     runs-on: ubuntu-latest
     steps:
-      - name: Addition
-        run: expr $((2 + 3))
-    
+      - name: Checkout current repo
+        uses: actions/checkout@v4
+
+      - name: Clone external repo
+        run: git clone https://github.com/mayurimohite1710-dev/Github14.git
+
+      - name: Show all files
+        run: ls -l
