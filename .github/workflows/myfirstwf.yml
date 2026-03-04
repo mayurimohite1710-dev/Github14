@@ -1,1 +1,8 @@
 name: My First Workflow
+on: workflow_dispatch
+jobs:
+    myfirstjob:
+        runs-on: ubuntu-latest
+        steps:
+            - name: print welcome meassage
+                run: echo "Welcome to my first workflow"
