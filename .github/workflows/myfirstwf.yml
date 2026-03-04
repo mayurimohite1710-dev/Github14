@@ -9,19 +9,24 @@ jobs:
       - name: create a file
         run: echo "This is my first workflow" > myfirstfile.txt
 
-      - name: download artifact
-        uses: actions/download-artifact@v3
+      - name: upload artifact
+        uses: actions/upload-artifact@v3
         with:
           name: myfirstartifact
           path: myfirstfile.txt
 
-   secondjob:
+  secondjob:
     runs-on: self-hosted
     needs: myfirstjob
     steps:
+      - name: download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: myfirstartifact
+
       - name: read the file
-        run: cat myfirstfile.txt
-          
+        run: cat myfirstartifact/myfirstfile.txt
+         
 
       
         
