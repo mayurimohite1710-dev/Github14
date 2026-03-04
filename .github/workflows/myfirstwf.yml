@@ -6,5 +6,6 @@ jobs:
   myfirstjob:
     runs-on: ubuntu-latest
     steps:
-      - name: Print welcome message
-        run: echo "Welcome to my first workflow"
+      - name: Addition
+        run: expr $((2 + 3))
+    
