@@ -9,6 +9,9 @@ jobs:
       - name: create a file
         run: echo "This is my first workflow" > myfirstfile.txt
 
+      - name: verify file
+        run: ls -l
+
       - name: upload artifact
         uses: actions/upload-artifact@v3
         with:
@@ -16,7 +19,7 @@ jobs:
           path: myfirstfile.txt
 
   secondjob:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: myfirstjob
     steps:
       - name: download artifact
@@ -24,7 +27,7 @@ jobs:
         with:
           name: myfirstartifact
 
-      - name: read the file
+      - name: read file
         run: cat myfirstartifact/myfirstfile.txt
          
 
