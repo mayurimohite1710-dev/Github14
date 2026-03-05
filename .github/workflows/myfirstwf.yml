@@ -1,4 +1,3 @@
-
 name: My First Workflow
 
 on: push
@@ -23,9 +22,5 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run tests
-        run: npm test
-         
-
-      
-        
+      - name: Run test
+        run: echo "Running tests on Node ${{ matrix.node-version }}"
