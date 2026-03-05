@@ -4,31 +4,22 @@ on: push
 
 jobs:
   myfirstjob:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
-      - name: create a file
-        run: echo "This is my first workflow" > myfirstfile.txt
 
-      - name: verify file
-        run: ls -l
-
-      - name: upload artifact
-        uses: actions/upload-artifact@v3
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          name: myfirstartifact
-          path: myfirstfile.txt
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
 
-  secondjob:
-    runs-on: self-hosted
-    needs: myfirstjob
-    steps:
-      - name: download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: myfirstartifact
+      - name: AWS CLI Check
+        run: aws --version
+      - name: List S3 Buckets
+        run: aws s3 ls
+      
 
-      - name: read file
-        run: cat myfirstartifact/myfirstfile.txt
          
 
       
